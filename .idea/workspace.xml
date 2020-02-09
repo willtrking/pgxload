@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="867868e5-e8e3-4637-a8f6-887b7a07fe3a" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" path="/usr/local/go" />
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectId" id="1XNQpmuQD1QT96KjrOu4GYBxRDA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.Go" />
+  </component>
+  <component name="RunManager" selected="Go Test.TestIsAllUpper in github.com/willtrking/pgxload">
+    <configuration name="TestCamelToSnakeCase in github.com/willtrking/pgxload" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="pgxload" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/willtrking/pgxload" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestCamelToSnakeCase$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestColumnNames in github.com/willtrking/pgxload" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="pgxload" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/willtrking/pgxload" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestColumnNames$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestIsAllUpper in github.com/willtrking/pgxload" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="pgxload" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/willtrking/pgxload" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestIsAllUpper$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestMissingColumns in github.com/willtrking/pgxload" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="pgxload" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/willtrking/pgxload" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestMissingColumns$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestSliceElemType in github.com/willtrking/pgxload" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="pgxload" />
+      <working_directory value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/willtrking/pgxload" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestSliceElemType$" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Test.TestIsAllUpper in github.com/willtrking/pgxload" />
+        <item itemvalue="Go Test.TestCamelToSnakeCase in github.com/willtrking/pgxload" />
+        <item itemvalue="Go Test.TestMissingColumns in github.com/willtrking/pgxload" />
+        <item itemvalue="Go Test.TestSliceElemType in github.com/willtrking/pgxload" />
+        <item itemvalue="Go Test.TestColumnNames in github.com/willtrking/pgxload" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="320" y="210" key="#Go_Modules_(vgo)" timestamp="1581135435667">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="320" y="210" key="#Go_Modules_(vgo)/0.23.1680.1027@0.23.1680.1027" timestamp="1581135435667" />
+    <state x="-1063" y="-959" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1581214277528">
+      <screen x="-1741" y="-1417" width="2560" height="1417" />
+    </state>
+    <state x="445" y="355" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1580884551235" />
+    <state x="-1063" y="-959" key="#com.intellij.fileTypes.FileTypeChooser/819.-1417.2560.1417/-1741.-1417.2560.1417/0.23.1680.1027@-1741.-1417.2560.1417" timestamp="1581214277528" />
+    <state width="1638" height="166" key="GridCell.Tab.0.bottom" timestamp="1581218980355">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1638" height="166" key="GridCell.Tab.0.bottom/0.23.1680.1027@0.23.1680.1027" timestamp="1581218980355" />
+    <state width="2518" height="488" key="GridCell.Tab.0.bottom/819.-1417.2560.1417/-1741.-1417.2560.1417/0.23.1680.1027@-1741.-1417.2560.1417" timestamp="1581214471144" />
+    <state width="1638" height="166" key="GridCell.Tab.0.center" timestamp="1581218980354">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1638" height="166" key="GridCell.Tab.0.center/0.23.1680.1027@0.23.1680.1027" timestamp="1581218980354" />
+    <state width="2518" height="488" key="GridCell.Tab.0.center/819.-1417.2560.1417/-1741.-1417.2560.1417/0.23.1680.1027@-1741.-1417.2560.1417" timestamp="1581214471143" />
+    <state width="1638" height="166" key="GridCell.Tab.0.left" timestamp="1581218980354">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1638" height="166" key="GridCell.Tab.0.left/0.23.1680.1027@0.23.1680.1027" timestamp="1581218980354" />
+    <state width="2518" height="488" key="GridCell.Tab.0.left/819.-1417.2560.1417/-1741.-1417.2560.1417/0.23.1680.1027@-1741.-1417.2560.1417" timestamp="1581214471142" />
+    <state width="1638" height="166" key="GridCell.Tab.0.right" timestamp="1581218980355">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state width="1638" height="166" key="GridCell.Tab.0.right/0.23.1680.1027@0.23.1680.1027" timestamp="1581218980355" />
+    <state width="2518" height="488" key="GridCell.Tab.0.right/819.-1417.2560.1417/-1741.-1417.2560.1417/0.23.1680.1027@-1741.-1417.2560.1417" timestamp="1581214471144" />
+    <state x="-960" y="-1070" key="SettingsEditor" timestamp="1581212655367">
+      <screen x="-1741" y="-1417" width="2560" height="1417" />
+    </state>
+    <state x="-960" y="-1070" key="SettingsEditor/819.-1417.2560.1417/-1741.-1417.2560.1417/0.23.1680.1027@-1741.-1417.2560.1417" timestamp="1581212655367" />
+    <state x="-1154" y="-1082" width="1021" height="933" key="search.everywhere.popup" timestamp="1581212155915">
+      <screen x="-1741" y="-1417" width="2560" height="1417" />
+    </state>
+    <state x="385" y="266" width="670" height="676" key="search.everywhere.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1581052624186" />
+    <state x="-1154" y="-1082" width="1021" height="933" key="search.everywhere.popup/819.-1417.2560.1417/-1741.-1417.2560.1417/0.23.1680.1027@-1741.-1417.2560.1417" timestamp="1581212155915" />
+  </component>
+</project>
