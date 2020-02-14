@@ -43,11 +43,6 @@ func (upd StructUpdate) getFieldMap(m *reflectx.Mapper) (map[string]reflect.Valu
 		return nil, fmt.Errorf("update data is not a struct or pointer to a struct")
 	}
 
-	typeMap := m.TypeMap(reflect.TypeOf(upd.data))
-	for _, t := range typeMap.Index {
-		fmt.Println(t)
-	}
-
 	fieldMap := m.FieldMap(val)
 
 	if len(fieldMap) <= 0 {
