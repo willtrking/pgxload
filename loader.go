@@ -25,7 +25,6 @@ type PgxLoader interface {
 	CommonLoader
 }
 
-
 // Configuration options to pass to reflectx.NewMapperFunc
 type Config struct {
 	StructTag string

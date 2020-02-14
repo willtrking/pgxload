@@ -2,8 +2,8 @@ package pgxload
 
 import (
 	"context"
-	"database/sql"
 	"errors"
+	"fmt"
 	"reflect"
 	"strings"
 	"unicode"
@@ -96,7 +96,7 @@ func prepareInput(dest interface{}) (reflect.Value, error) {
 	}
 
 	if !val.Elem().CanSet() {
-		return reflect.Value{}, errors.New("can only scan into a publicly set-able destination (is this a private field? has it been initialized?)")
+		return reflect.Value{}, errors.New("can only scan into a publicly set-able destination (is it a private field? has it been initialized? is it nil?)")
 	}
 
 	return reflect.Indirect(val), nil
@@ -122,42 +122,17 @@ func missingColumns(columnNames []string, traversals [][]int) error {
 	}
 
 	if len(missingColNames) == 1 {
-		return errors.New("missing destination name: "+missingColNames[0])
+		return errors.New("missing destination name: " + missingColNames[0])
 	} else if len(missingColNames) > 1 {
-		return errors.New("missing destination names: "+strings.Join(missingColNames,", "))
+		return errors.New("missing destination names: " + strings.Join(missingColNames, ", "))
 	}
 
 	return nil
 }
 
-func isDirectlyScannable(in interface{}) bool {
-
-	if _, isScanner := in.(sql.Scanner); isScanner {
-		return true
-	}
-
-	t := reflect.TypeOf(in)
-	if t.PkgPath() != "" {
-		return true
-	}
-
-	k := t.Kind()
-	if  k == reflect.Array || k == reflect.Chan || k == reflect.Map ||
-		k == reflect.Ptr || k == reflect.Slice {
-		return isDirectlyScannable(t.Elem()) || k == reflect.Map && isDirectlyScannable(t.Key())
-	} else if k == reflect.Struct {
-		for i := t.NumField() - 1; i >= 0; i-- {
-			if isDirectlyScannable(t.Field(i).Type) {
-				return true
-			}
-		}
-	}
-
-	return false
-}
-
 // Run the specified function in the given transaction
 // Will automatically rollback if the function returns an error, and commit if it does not
+// Will rollback transaction in case of panic.
 func RunInTransaction(ctx context.Context, loader PgxLoader, fn func(ctx context.Context, tx PgxTxLoader) error) error {
 
 	tx, err := loader.Begin(ctx)
@@ -168,6 +143,7 @@ func RunInTransaction(ctx context.Context, loader PgxLoader, fn func(ctx context
 	return internalRunInTransaction(ctx, NewPgxTxLoader(loader, tx), fn)
 }
 
+// Internal func used by RunInTransaction. Will rollback transaction in case of panic.
 func internalRunInTransaction(ctx context.Context, tx PgxTxLoader, fn func(ctx context.Context, tx PgxTxLoader) error) error {
 	defer func() {
 		if err := recover(); err != nil {
@@ -182,4 +158,38 @@ func internalRunInTransaction(ctx context.Context, tx PgxTxLoader, fn func(ctx c
 	}
 
 	return tx.Commit(ctx)
+}
+
+func QuotedColumn(column string) string {
+
+	if column == "*" {
+		return "*"
+	}
+
+	if column[0] != '"' {
+		column = fmt.Sprintf("\"%s", column)
+	}
+
+	if column[len(column)-1] != '"' {
+		column = fmt.Sprintf("%s\"", column)
+	}
+
+	return column
+}
+
+func ToColumnList(strs ...string) string {
+
+	var colList string
+	for idx, str := range strs {
+
+		str = strings.TrimSpace(str)
+
+		colList += QuotedColumn(str)
+
+		if idx < len(strs)-1 {
+			colList += ", "
+		}
+	}
+
+	return colList
 }

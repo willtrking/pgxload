@@ -13,12 +13,11 @@ type PgxTxLoader interface {
 	CommonLoader
 }
 
-
 func NewPgxTxLoader(existing PgxLoader, tx pgx.Tx) PgxTxLoader {
 
 	return &pgxTxLoader{
-		loader:existing,
-		Tx: tx,
+		loader: existing,
+		Tx:     tx,
 	}
 }
 

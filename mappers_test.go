@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestCamelToSnakeCase(t *testing.T)  {
+func TestCamelToSnakeCase(t *testing.T) {
 
 	idConvert := CamelToSnakeCase("ID")
 	allCapsConvert := CamelToSnakeCase("HELLOTHERE")

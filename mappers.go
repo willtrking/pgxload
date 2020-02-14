@@ -6,19 +6,24 @@ import (
 )
 
 // A smart-ish camel to snake case converter
-// If input is all caps, will not convert to snake (e.g. ID will be id, not i_d)
+// Tries to make intelligent decisions about phrases that are all caps in a camel-cased string
+// e.g. ID will be id, not i_d, and OrganizationID will be organization_id, not organization_i_d
 func CamelToSnakeCase(local string) string {
 
 	var remote bytes.Buffer
 
-	allUpper := IsAllUpper(local)
-
+	lastLower := false
 	for idx, f := range local {
-		if idx != 0 {
-			if !allUpper && unicode.IsUpper(f) {
+
+		if unicode.IsUpper(f) {
+			if idx != 0 && lastLower {
 				remote.WriteRune('_')
 			}
+			lastLower = false
+		} else {
+			lastLower = true
 		}
+
 		remote.WriteRune(unicode.ToLower(f))
 	}
 

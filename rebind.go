@@ -23,4 +23,3 @@ func RebindPositional(query string) string {
 
 	return string(rqb)
 }
-

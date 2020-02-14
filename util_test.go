@@ -1,13 +1,13 @@
 package pgxload
 
 import (
+	"fmt"
 	"reflect"
 	"testing"
 
 	"github.com/jackc/pgproto3/v2"
 	"github.com/stretchr/testify/assert"
 )
-
 
 func Test_IsAllUpper(t *testing.T) {
 
@@ -61,7 +61,6 @@ func Test_ColumnNames(t *testing.T) {
 		assert.Contains(t, names, "col2")
 	}
 }
-
 
 func Test_MissingColumns(t *testing.T) {
 
@@ -139,7 +138,30 @@ func Test_MissingColumns(t *testing.T) {
 	assert.NoError(t, err)
 }
 
-
 func Test_isDirectlyScannable(t *testing.T) {
+
+	var str string
+	var ui uint
+	var ui8 uint8
+	var ui16 uint16
+	var ui32 uint32
+	var ui64 uint64
+	/*var i int
+	var i8 int8
+	var i16 int16
+	var i32 int32
+	var i64 int64
+	var f32 float32
+	var f64 float64
+	var b bool
+	var c64 complex64
+	var c128 complex128*/
+
+	fmt.Println(isDirectlyScannable(str))
+	fmt.Println(isDirectlyScannable(ui))
+	fmt.Println(isDirectlyScannable(ui8))
+	fmt.Println(isDirectlyScannable(ui16))
+	fmt.Println(isDirectlyScannable(ui32))
+	fmt.Println(isDirectlyScannable(ui64))
 
 }
