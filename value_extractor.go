@@ -29,7 +29,7 @@ func NewStructColumnValueExtractor(m *reflectx.Mapper, tmpl interface{}) (Struct
 
 	return StructColumnValueExtractor{
 		mapper:    m,
-		fields:    typeMap.Index,
+		structMap: typeMap,
 		fieldOpts: fieldOpts,
 	}, nil
 }
@@ -37,7 +37,7 @@ func NewStructColumnValueExtractor(m *reflectx.Mapper, tmpl interface{}) (Struct
 type StructColumnValueExtractor struct {
 	mapper *reflectx.Mapper
 
-	fields    []*reflectx.FieldInfo
+	structMap *reflectx.StructMap
 	fieldOpts []structTagOpts
 
 	omitColumns map[string]struct{}
@@ -53,7 +53,14 @@ func (s StructColumnValueExtractor) omitField(num int, isZero bool) bool {
 		return true
 	}
 
-	_, omit := s.omitColumns[s.fields[num].Name]
+	// omit fields who's parent is not the root of the tree
+	// this prevents sub-structs from becoming individual columns
+
+	if s.structMap.Index[num].Parent != s.structMap.Tree {
+		return true
+	}
+
+	_, omit := s.omitColumns[s.structMap.Index[num].Name]
 	return omit
 }
 
@@ -67,7 +74,7 @@ func (s StructColumnValueExtractor) WithOmitColumns(cols ...string) StructColumn
 
 	return StructColumnValueExtractor{
 		mapper:      s.mapper,
-		fields:      s.fields,
+		structMap:   s.structMap,
 		fieldOpts:   s.fieldOpts,
 		omitColumns: omitColumns,
 	}
@@ -76,7 +83,7 @@ func (s StructColumnValueExtractor) WithOmitColumns(cols ...string) StructColumn
 func (s StructColumnValueExtractor) ExtractRawColumnData(data interface{}, column string) (interface{}, error) {
 	val := reflect.ValueOf(data)
 
-	for _, field := range s.fields {
+	for _, field := range s.structMap.Index {
 		if field.Name == column {
 			dataField := reflectx.FieldByIndexes(val, field.Index)
 
@@ -95,11 +102,9 @@ func (s StructColumnValueExtractor) Extract(data interface{}) (ExtractedColumnVa
 
 	val := reflect.ValueOf(data)
 
-	for fieldNum, field := range s.fields {
+	for fieldNum, field := range s.structMap.Index {
 
-		fmt.Println(field)
 		dataField := reflectx.FieldByIndexesReadOnly(val, field.Index)
-		fmt.Println(dataField)
 
 		isZero, err := IsZero(dataField)
 		if err != nil {
@@ -168,8 +173,6 @@ func (e ExtractedColumnValues) UpdateSyntax(paramOffset int) (string, []interfac
 	var params []interface{}
 	for idx, col := range e.columns {
 
-		paramOffset += 1
-
 		stmt += QuotedColumn(col) + " = "
 
 		colValue := e.columnValues[col]
@@ -179,6 +182,7 @@ func (e ExtractedColumnValues) UpdateSyntax(paramOffset int) (string, []interfac
 		} else if colValue.UseNULL() {
 			stmt += "NULL"
 		} else {
+			paramOffset += 1
 			stmt += fmt.Sprintf("$%d", paramOffset)
 
 			params = append(params, colValue.value)
@@ -209,8 +213,6 @@ func (e ExtractedColumnValues) InsertValueSyntax(paramOffset int) (string, []int
 	var params []interface{}
 	for idx, col := range e.columns {
 
-		paramOffset += 1
-
 		colValue := e.columnValues[col]
 
 		if colValue.UseDefault() {
@@ -218,6 +220,8 @@ func (e ExtractedColumnValues) InsertValueSyntax(paramOffset int) (string, []int
 		} else if colValue.UseNULL() {
 			stmt += "NULL"
 		} else {
+			paramOffset += 1
+
 			stmt += fmt.Sprintf("$%d", paramOffset)
 
 			params = append(params, colValue.value)
